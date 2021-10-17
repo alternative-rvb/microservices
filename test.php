@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . "/func/config.php";
+require __DIR__ . "/inc/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,20 +25,16 @@ require __DIR__ . "/func/config.php";
             date_default_timezone_set('Europe/Paris');
             echo '<h1>TEST</h1>';
             echo '<p>' . utf8_encode(strftime('%A %d %B %Y, %H:%M')) . '</p>';
-            include 'func/func-crud.php';
             ?>
         </div>
 
         <div class="row">
             <?php
-            // var_dump($_SESSION);
-            if (!empty($_SESSION)) {
-                echo $_SESSION['message'];
-                session_unset();
-            }
-
+            include 'func/func-crud.php';
+            afficherTableau(getHeaderTable('mysql-training','utilisateurs'), readAllUsers('php-users','utilisateurs'));
             ?>
         </div>
+
 
     </main>
     <?php

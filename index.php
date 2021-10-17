@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . "/func/config.php";
+require __DIR__ . "/inc/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,12 +19,9 @@ require __DIR__ . "/func/config.php";
     ?>
     <main class="container p-1">
         <div class="row">
+            <h1>CRUD</h1>
             <?php
 
-            setlocale(LC_TIME, 'fr_FR');
-            date_default_timezone_set('Europe/Paris');
-            echo '<h1>CRUD</h1>';
-            echo '<p>' . utf8_encode(strftime('%A %d %B %Y, %H:%M')) . '</p>';
             ?>
         </div>
 
@@ -32,7 +29,8 @@ require __DIR__ . "/func/config.php";
             <?php
             include 'func/func-crud.php';
 
-            afficherTableau(getHeaderTable(), readAllUsers());
+            afficherTableau(getHeaderTable('php-users','utilisateurs'), readAllUsers('php-users','utilisateurs'));
+            
             ?>
 
             <a class="btn btn-primary" href="form-user.php">Ajouter un utilisateur</a>

@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/func/config.php';
+require __DIR__ . '/inc/config.php';
 include __DIR__ . '/func/func-crud.php';
 
 
@@ -7,7 +7,7 @@ include __DIR__ . '/func/func-crud.php';
 
 $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
 if (!empty($id)) {
-	$user = readUser($id);
+	$user = readUser('php-users','utilisateurs',$id);
 	$action = "UPDATE";
 	$libelle = "Mettre a jour";
 } else {
@@ -32,7 +32,7 @@ if (!empty($id)) {
 	// var_dump($user);
 	?>
 	<main class="container">
-		<form class="" action="create-update.php" method="POST">
+		<form class="" action="func/create-update.php" method="POST">
 
 			<input type="hidden" name="id" value="<?= $id ?>" />
 			<input type="hidden" name="action" value="<?= $action ?>" />
@@ -56,7 +56,7 @@ if (!empty($id)) {
 		</form>
 		<br>
 		<?php if ($action != "CREATE") : ?>
-			<form class="" action="create-update.php" method="POST">
+			<form class="" action="func/create-update.php" method="POST">
 				<input type="hidden" name="action" value="DELETE" />
 				<input type="hidden" name="id" value="<?= $user['id'] ?>" />
 				<button class="btn btn-primary" type="submit">Supprimer</button>

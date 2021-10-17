@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . "./func/config.php";
+require __DIR__ . "./inc/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,18 +15,21 @@ require __DIR__ . "./func/config.php";
     <?php
     include __DIR__ . "./inc/header.php";
     ?>
-    <main class="p--1">
-        <?php
-        echo '<h1>PHP INFO</h1>';
+    <main class="container">
+        <div class="row">
+            <h1>PHP INFO</h1>
+        </div>
+        <div class="row">
+            <?php
+            ob_start();
+            phpinfo();
+            $pinfo = ob_get_contents();
+            ob_end_clean();
 
-        ob_start();
-        phpinfo();
-        $pinfo = ob_get_contents();
-        ob_end_clean();
-
-        $pinfo = preg_replace('%^.*<body>(.*)</body>.*$%ms', '$1', $pinfo);
-        echo $pinfo;
-        ?>
+            $pinfo = preg_replace('%^.*<body>(.*)</body>.*$%ms', '$1', $pinfo);
+            echo $pinfo;
+            ?>
+        </div>
     </main>
     <?php
     include __DIR__ . "/inc/footer.php";

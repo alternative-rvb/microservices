@@ -1,9 +1,10 @@
 <?php
 
-function getDatabaseConnexion()
+// ANCHOR Connexion à la Base de donnée
+
+function getDatabaseConnexion($dataBase)
 {
     $host = 'localhost';
-    $dataBase = 'php-users';
     $user = 'root';
     $pass = '';
     try {
@@ -15,11 +16,14 @@ function getDatabaseConnexion()
         die();
     }
 }
-function readAllUsers()
+
+// ANCHOR READ Afficher tous les utilisateurs
+
+function readAllUsers($dataBase, $table)
 {
     try {
-        $connexion = getDatabaseConnexion();
-        $sql = 'SELECT * FROM utilisateurs';
+        $connexion = getDatabaseConnexion($dataBase);
+        $sql = "SELECT * FROM $table";
         // -> appel d'une méthode - voir objet - on accède à une fonction
         $stmt = $connexion->query($sql);
         $row = $stmt->fetchAll();
@@ -29,11 +33,13 @@ function readAllUsers()
     }
 }
 
-function readUser($id)
+// ANCHOR READ Afficher un utilisateur
+
+function readUser($dataBase, $table, $id)
 {
     try {
-        $connexion = getDatabaseConnexion();
-        $sql = "SELECT * from utilisateurs where id = '$id' ";
+        $connexion = getDatabaseConnexion($dataBase);
+        $sql = "SELECT * from $table where id = '$id' ";
         $stmt = $connexion->query($sql);
         $row = $stmt->fetchAll();
         // return $row[0];
@@ -44,23 +50,29 @@ function readUser($id)
         echo $sql . "<br>" . $e->getMessage();
     }
 }
-function createUser($nom, $prenom, $age, $email)
+
+// ANCHOR CREATE Créer un utilisateur
+
+function createUser($dataBase, $table, $nom, $prenom, $age, $email)
 {
     // INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `age`, `email`) VALUES (NULL, 'Muche', 'Mich', '25', 'mich.muche@gmx.com');
     try {
-        $connexion = getDatabaseConnexion();
-        $sql = "INSERT INTO utilisateurs (Nom, Prénom, Âge, Email) 
+        $connexion = getDatabaseConnexion($dataBase);
+        $sql = "INSERT INTO $table (Nom, Prénom, Âge, Email) 
                 VALUES ('$nom', '$prenom', '$age' ,'$email')";
         $connexion->exec($sql);
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
     }
 }
-function updateUser($id, $nom, $prenom, $age, $email)
+
+// ANCHOR UPDATE Modifier un utilisateur
+
+function updateUser($dataBase, $table, $id, $nom, $prenom, $age, $email)
 {
     try {
-        $connexion = getDatabaseConnexion();
-        $sql = "UPDATE utilisateurs set 
+        $connexion = getDatabaseConnexion($dataBase);
+        $sql = "UPDATE $table set 
                     Nom = '$nom',
                     Prénom = '$prenom',
                     Âge = '$age',
@@ -71,22 +83,28 @@ function updateUser($id, $nom, $prenom, $age, $email)
         echo $sql . "<br>" . $e->getMessage();
     }
 }
-function deleteUser($id)
+
+// ANCHOR DELETE Supprimer un utilisateur
+
+function deleteUser($dataBase, $table, $id)
 {
     try {
-        $connexion = getDatabaseConnexion();
-        $sql = "DELETE from utilisateurs where id = '$id' ";
+        $connexion = getDatabaseConnexion($dataBase);
+        $sql = "DELETE from $table where id = '$id' ";
         $stmt = $connexion->query($sql);
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
     }
 }
 
-function getHeaderTable()
+// ANCHOR Afficher l'en-tête de la table
+
+function getHeaderTable($dataBase, $table)
 {
     try {
-        $connexion = getDatabaseConnexion();
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'utilisateurs'";
+        $connexion = getDatabaseConnexion($dataBase);
+        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='$dataBase' 
+        AND TABLE_NAME = '$table'";
         $stmt = $connexion->query($sql);
         $row = $stmt->fetchAll();
         return $row;
@@ -95,25 +113,7 @@ function getHeaderTable()
     }
 }
 
-function getNewUser()
-{
-    $user['id'] = "";
-    $user['Nom'] = "";
-    $user['Prénom'] = "";
-    $user['Âge'] = "";
-    $user['Email'] = "";
-    return $user;
-}
-
-// SECURITY
-
-function test_input($data)
-{
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
+// ANCHOR Afficher un tableau
 
 function afficherTableau($headers, $rows)
 {
@@ -134,13 +134,13 @@ function afficherTableau($headers, $rows)
             <?php
             foreach ($rows as $row) :
             ?>
-                <tr>
+                <tr class="position-relative">
                     <?php
                     for ($i = 0; $i < count($headers); $i++) :
                         if ($i == 0) :
                     ?>
                             <td scope="col">
-                                <a href="form-user.php?id=<?= $row[$i] ?>"><?= $row[$i] ?></a>
+                                <a class="btn btn-link stretched-link text-decoration-none" href="form-user.php?id=<?= $row[$i] ?>"><i class="bi bi-pencil-square"></i> <?= $row[$i] ?></a>
                             </td>
                         <?php
 
