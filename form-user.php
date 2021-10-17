@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/config.php';
+require __DIR__ . '/func/config.php';
 include __DIR__ . '/func/func-crud.php';
 
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__ . "/config.php";
+require __DIR__ . "/func/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
