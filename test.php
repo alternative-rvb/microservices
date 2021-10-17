@@ -31,7 +31,7 @@ require __DIR__ . "/inc/config.php";
         <div class="row">
             <?php
             include 'func/func-crud.php';
-            afficherTableau(getHeaderTable('mysql-training','utilisateurs'), readAllUsers('php-users','utilisateurs'));
+            afficherTableau(getHeaderTable('mysql-training','utilisateurs'), readAllUsers('mysql-training','utilisateurs'));
             ?>
         </div>
 
