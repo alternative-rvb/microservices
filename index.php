@@ -3,7 +3,7 @@ session_start();
 require __DIR__ . "/func/config.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <?php
