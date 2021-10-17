@@ -86,7 +86,8 @@ function getHeaderTable()
 {
     try {
         $connexion = getDatabaseConnexion();
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'utilisateurs'";
+        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='php-users' 
+        AND TABLE_NAME = 'utilisateurs'";
         $stmt = $connexion->query($sql);
         $row = $stmt->fetchAll();
         return $row;
