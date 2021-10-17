@@ -21,13 +21,10 @@ function test_input($data)
 
 // ANCHOR SOUS DOSSIER
 
-function activeLink($suffixe, $url)
+function activeLink($url)
 {
-    $realURL = $suffixe . $url;
-    // var_dump('$realURL => '.$realURL);
-    // var_dump('$_SERVER => '.$_SERVER['SCRIPT_NAME']);
-    if ($realURL == $_SERVER['SCRIPT_NAME']) {
-        return true;
+    if (toTitle($url) == toTitle($_SERVER['SCRIPT_NAME'])) {
+        return 'active';
     }
 }
 

@@ -23,21 +23,18 @@ function creationMenu($filtres)
             </button>
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <a class="nav-link" href="index.php">Home</a>
+                <a class="nav-link <?= activeLink('index.php') ?>" href="index.php">Home</a>
 
                     <?php
                     foreach ($links as $link) :
                         // Active link
-                        $test = activeLink('/php-training/', $link);
-                        $active = !$test ?: 'active';
+                        
+                       
 
                         // Filtres 
                         if (!in_array($link, $filtres)) :
-                            // if ($link == 'index.php') :
-                            //     continue;
-                            // endif;
                     ?>
-                            <a class="nav-link <?= $active ?>" href="<?= $link ?>"><?= toTitle($link) ?></a>
+                            <a class="nav-link <?= activeLink($link) ?>" href="<?= $link ?>"><?= toTitle($link) ?></a>
                     <?php
 
                         endif;
