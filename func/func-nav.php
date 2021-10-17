@@ -27,16 +27,11 @@ function creationMenu($filtres)
 
                     <?php
                     foreach ($links as $link) :
-                        // Active link
-                        
-                       
-
                         // Filtres 
                         if (!in_array($link, $filtres)) :
                     ?>
                             <a class="nav-link <?= activeLink($link) ?>" href="<?= $link ?>"><?= toTitle($link) ?></a>
                     <?php
-
                         endif;
                     endforeach;
                     ?>

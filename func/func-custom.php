@@ -40,4 +40,4 @@ function toTitle($string)
     return $string;
 }
 
-// var_dump(toTitle($test));
+
