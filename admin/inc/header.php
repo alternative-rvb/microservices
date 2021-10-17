@@ -1,5 +1,5 @@
 <?php
-include 'admin/func/func-custom.php';
+include 'func/func-custom.php';
 include 'func/func-nav.php';
 
 ?>

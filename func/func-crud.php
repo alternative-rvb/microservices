@@ -33,128 +33,22 @@ function readAllUsers($dataBase, $table)
     }
 }
 
-// ANCHOR READ Afficher un utilisateur
-
-function readUser($dataBase, $table, $id)
-{
-    try {
-        $connexion = getDatabaseConnexion($dataBase);
-        $sql = "SELECT * from $table where id = '$id' ";
-        $req = $connexion->query($sql);
-        $row = $req->fetchAll();
-        // return $row[0];
-        if (!empty($row)) {
-            return $row[0];
-        }
-    } catch (PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
-    }
-}
-
-// ANCHOR CREATE Créer un utilisateur
-
-function createUser($dataBase, $table, ...$col)
-{
-
-    try {
-        $connexion = getDatabaseConnexion($dataBase);
-        // FIXME Attention 5 valeurs
-        $req = $connexion->prepare("INSERT INTO $table VALUES (?, ?, ?, ? ,?)");
-        $req->execute(array(NULL, ...$col));
-    } catch (PDOException $e) {
-        echo $req . "<br>" . $e->getMessage();
-    }
-}
-
-// ANCHOR UPDATE Modifier un utilisateur
-
-function updateUser($dataBase, $table, $id, ...$col)
-{
-    try {
-        $connexion = getDatabaseConnexion($dataBase);
-        // FIXME Attention aux noms des colonnes
-        $req = $connexion->prepare("UPDATE $table SET Nom = ?, Prénom = ?, Âge = ?, Email = ? WHERE id = ? ");
-        $req->execute(array(...$col, $id));
-    } catch (PDOException $e) {
-        echo $req . "<br>" . $e->getMessage();
-    }
-}
-
-// ANCHOR DELETE Supprimer un utilisateur
-
-function deleteUser($dataBase, $table, $id)
-{
-    try {
-        $connexion = getDatabaseConnexion($dataBase);
-        $sql = "DELETE FROM $table WHERE id = '$id' ";
-        $req = $connexion->query($sql);
-    } catch (PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
-    }
-}
-
-// ANCHOR Afficher l'en-tête de la table
-
-function getHeaderTable($dataBase, $table)
-{
-    try {
-        $connexion = getDatabaseConnexion($dataBase);
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='$dataBase' 
-        AND TABLE_NAME = '$table'";
-        $req = $connexion->query($sql);
-        $row = $req->fetchAll();
-        return $row;
-    } catch (PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
-    }
-}
-
 // ANCHOR Afficher un tableau
 
-function afficherTableau($headers, $rows)
+function afficherTableau($rows)
 {
+    foreach ($rows as $row) :
 ?>
-    <table class="table table-striped table-hover">
-        <thead>
-            <tr>
-                <?php
-                foreach ($headers as $header) :
-                ?>
-                    <th scope="col"><?= $header['COLUMN_NAME'] ?></th>
-                <?php
-                endforeach;
-                ?>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            foreach ($rows as $row) :
-            ?>
-                <tr class="position-relative">
-                    <?php
-                    for ($i = 0; $i < count($headers); $i++) :
-                        if ($i == 0) :
-                    ?>
-                            <td scope="col">
-                                <a class="btn btn-link stretched-link text-decoration-none" href="form-user.php?id=<?= $row[$i] ?>"><i class="bi bi-pencil-square"></i> <?= $row[$i] ?></a>
-                            </td>
-                        <?php
-
-                        else :
-                        ?>
-                            <td scope="col">
-                                <?= $row[$i] ?>
-                            </td>
-                    <?php
-                        endif;
-                    endfor;
-                    ?>
-                </tr>
-            <?php
-            endforeach;
-            ?>
-        </tbody>
-
-    </table>
+    <div class="col-md-4 p-2">
+        <div class="border border-dark p-2 h-100">
+            <h3><?= $row['titre'] ?></h3>
+            <p><small><?= $row['auteur'] ?></small></p>
+            <p><?= $row['contenu'] ?></p>
+            <p>
+                <a class="btn btn-light" href="#">À partir de <?= $row['prix'] ?> €</a>
+            </p>
+        </div>
+    </div>
 <?php
+endforeach;
 }

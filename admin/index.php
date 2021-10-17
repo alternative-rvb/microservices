@@ -19,10 +19,8 @@ require __DIR__ . "/inc/config.php";
     ?>
     <main class="container p-1">
         <div class="row">
-            <h1>TEST</h1>
+            <h1>CRUD</h1>
             <?php
-
-            // include '/func/func-custom.php';
             date_fr();
             ?>
         </div>
@@ -30,14 +28,22 @@ require __DIR__ . "/inc/config.php";
         <div class="row">
             <?php
             include 'func/func-crud.php';
-            afficherTableau(getHeaderTable('mysql-training', 'utilisateurs'), readAllUsers('mysql-training', 'utilisateurs'));
 
-            var_dump(toTitle($_SERVER['SCRIPT_NAME']));
-            // activeLink($suffixe, $url);
+            afficherTableau(getHeaderTable('php-users', 'microservices'), readAllUsers('php-users', 'microservices'));
+
+            ?>
+
+            <a class="btn btn-primary" href="form-microservices.php"><i class="bi bi-plus-square"></i> Ajouter</a>
+
+            <?php
+            // var_dump($_SESSION);
+            if (!empty($_SESSION)) {
+                echo $_SESSION['message'];
+                session_unset();
+            }
 
             ?>
         </div>
-
 
     </main>
     <?php

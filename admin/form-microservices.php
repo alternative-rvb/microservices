@@ -7,7 +7,7 @@ include __DIR__ . '/func/func-crud.php';
 
 $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
 if (!empty($id)) {
-	$user = readUser('php-users','utilisateurs',$id);
+	$data = readUser('php-users', 'microservices', $id);
 	$action = "UPDATE";
 	$libelle = "Mettre a jour";
 } else {
@@ -29,7 +29,7 @@ if (!empty($id)) {
 <body>
 	<?php
 	require __DIR__ . "/inc/header.php";
-	// var_dump($user);
+	// var_dump($data);
 	?>
 	<main class="container">
 		<form class="" action="func/create-update.php" method="POST">
@@ -37,20 +37,20 @@ if (!empty($id)) {
 			<input type="hidden" name="id" value="<?= $id ?>" />
 			<input type="hidden" name="action" value="<?= $action ?>" />
 			<div class="mb-3">
-				<label class="form-label" for="name">Nom :</label>
-				<input class="form-control" type="text" id="nom" name="nom" value="<?= isset($user['Nom'])? $user['Nom'] : NULL ?>">
+				<label class="form-label" for="titre">Titre :</label>
+				<input class="form-control" type="text" id="titre" name="titre" value="<?= isset($data['titre']) ? $data['titre'] : NULL ?>">
 			</div>
 			<div class="mb-3">
-				<label class="form-label" for="prenom">Prénom :</label>
-				<input class="form-control" type="text" id="prenom" name="prenom" value="<?= isset($user['Prénom'])? $user['Prénom'] : NULL ?>">
+				<label class="form-label" for="auteur">Auteur :</label>
+				<input class="form-control" type="text" id="auteur" name="auteur" value="<?= isset($data['auteur']) ? $data['auteur'] : NULL ?>">
 			</div>
 			<div class="mb-3">
-				<label class="form-label" for="age">Âge :</label>
-				<input class="form-control" type="text" id="age" name="age" value="<?= isset($user['Âge'])? $user['Âge'] : NULL ?>">
+				<label class="form-label" for="contenu">Contenu :</label>
+				<textarea class="form-control" id="contenu" name="contenu"><?= isset($data['contenu']) ? $data['contenu'] : NULL ?></textarea>
 			</div>
 			<div class="mb-3">
-				<label class="form-label" for="email">email :</label>
-				<input class="form-control" name="email" placeholder="<?= isset($user['Email'])? $user['Email'] : NULL ?>">
+				<label class="form-label" for="prix">Prix :</label>
+				<input class="form-control" type="text" name="prix" value="<?= isset($data['prix']) ? $data['prix'] : NULL ?>">
 			</div>
 			<button class="btn btn-primary" type="submit"><?= $libelle ?></button>
 		</form>
@@ -58,7 +58,7 @@ if (!empty($id)) {
 		<?php if ($action != "CREATE") : ?>
 			<form class="" action="func/create-update.php" method="POST">
 				<input type="hidden" name="action" value="DELETE" />
-				<input type="hidden" name="id" value="<?= $user['id'] ?>" />
+				<input type="hidden" name="id" value="<?= $data['microservice_id'] ?>" />
 				<button class="btn btn-danger" type="submit"><i class="bi bi-trash"></i> Supprimer</button>
 			</form>
 		<?php endif ?>
