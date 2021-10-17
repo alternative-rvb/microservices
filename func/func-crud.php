@@ -25,8 +25,8 @@ function readAllUsers($dataBase, $table)
         $connexion = getDatabaseConnexion($dataBase);
         $sql = "SELECT * FROM $table";
         // -> appel d'une méthode - voir objet - on accède à une fonction
-        $stmt = $connexion->query($sql);
-        $row = $stmt->fetchAll();
+        $req = $connexion->query($sql);
+        $row = $req->fetchAll();
         return $row;
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
@@ -40,8 +40,8 @@ function readUser($dataBase, $table, $id)
     try {
         $connexion = getDatabaseConnexion($dataBase);
         $sql = "SELECT * from $table where id = '$id' ";
-        $stmt = $connexion->query($sql);
-        $row = $stmt->fetchAll();
+        $req = $connexion->query($sql);
+        $row = $req->fetchAll();
         // return $row[0];
         if (!empty($row)) {
             return $row[0];
@@ -87,7 +87,7 @@ function deleteUser($dataBase, $table, $id)
     try {
         $connexion = getDatabaseConnexion($dataBase);
         $sql = "DELETE FROM $table WHERE id = '$id' ";
-        $stmt = $connexion->query($sql);
+        $req = $connexion->query($sql);
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
     }
@@ -101,8 +101,8 @@ function getHeaderTable($dataBase, $table)
         $connexion = getDatabaseConnexion($dataBase);
         $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='$dataBase' 
         AND TABLE_NAME = '$table'";
-        $stmt = $connexion->query($sql);
-        $row = $stmt->fetchAll();
+        $req = $connexion->query($sql);
+        $row = $req->fetchAll();
         return $row;
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
