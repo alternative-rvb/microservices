@@ -118,7 +118,7 @@ function getHeaderTable($dataBase, $table)
 function afficherTableau($headers, $rows)
 {
 ?>
-    <table class="table">
+    <table class="table table-striped table-hover">
         <thead>
             <tr>
                 <?php

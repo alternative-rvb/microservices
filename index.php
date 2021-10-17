@@ -33,7 +33,7 @@ require __DIR__ . "/inc/config.php";
             
             ?>
 
-            <a class="btn btn-primary" href="form-user.php">Ajouter un utilisateur</a>
+            <a class="btn btn-primary" href="form-user.php"><i class="bi bi-plus-square"></i> Ajouter un utilisateur</a>
 
             <?php
             // var_dump($_SESSION);

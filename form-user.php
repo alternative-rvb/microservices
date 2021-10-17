@@ -59,7 +59,7 @@ if (!empty($id)) {
 			<form class="" action="func/create-update.php" method="POST">
 				<input type="hidden" name="action" value="DELETE" />
 				<input type="hidden" name="id" value="<?= $user['id'] ?>" />
-				<button class="btn btn-primary" type="submit">Supprimer</button>
+				<button class="btn btn-danger" type="submit"><i class="bi bi-trash"></i> Supprimer</button>
 			</form>
 		<?php endif ?>
 	</main>
