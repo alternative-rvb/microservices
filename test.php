@@ -19,19 +19,22 @@ require __DIR__ . "/inc/config.php";
     ?>
     <main class="container p-1">
         <div class="row">
+            <h1>TEST</h1>
             <?php
 
-            setlocale(LC_TIME, 'fr_FR');
-            date_default_timezone_set('Europe/Paris');
-            echo '<h1>TEST</h1>';
-            echo '<p>' . utf8_encode(strftime('%A %d %B %Y, %H:%M')) . '</p>';
+            // include '/func/func-custom.php';
+            date_fr();
             ?>
         </div>
 
         <div class="row">
             <?php
             include 'func/func-crud.php';
-            afficherTableau(getHeaderTable('mysql-training','utilisateurs'), readAllUsers('mysql-training','utilisateurs'));
+            afficherTableau(getHeaderTable('mysql-training', 'utilisateurs'), readAllUsers('mysql-training', 'utilisateurs'));
+
+            var_dump(toTitle($_SERVER['SCRIPT_NAME']));
+            // activeLink($suffixe, $url);
+
             ?>
         </div>
 

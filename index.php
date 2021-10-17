@@ -21,7 +21,7 @@ require __DIR__ . "/inc/config.php";
         <div class="row">
             <h1>CRUD</h1>
             <?php
-
+            date_fr();
             ?>
         </div>
 
@@ -29,8 +29,8 @@ require __DIR__ . "/inc/config.php";
             <?php
             include 'func/func-crud.php';
 
-            afficherTableau(getHeaderTable('php-users','utilisateurs'), readAllUsers('php-users','utilisateurs'));
-            
+            afficherTableau(getHeaderTable('php-users', 'utilisateurs'), readAllUsers('php-users', 'utilisateurs'));
+
             ?>
 
             <a class="btn btn-primary" href="form-user.php"><i class="bi bi-plus-square"></i> Ajouter un utilisateur</a>
