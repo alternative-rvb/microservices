@@ -53,34 +53,30 @@ function readUser($dataBase, $table, $id)
 
 // ANCHOR CREATE Créer un utilisateur
 
-function createUser($dataBase, $table, $nom, $prenom, $age, $email)
+function createUser($dataBase, $table, ...$col)
 {
-    // INSERT INTO `utilisateurs` (`id`, `nom`, `prenom`, `age`, `email`) VALUES (NULL, 'Muche', 'Mich', '25', 'mich.muche@gmx.com');
+
     try {
         $connexion = getDatabaseConnexion($dataBase);
-        $sql = "INSERT INTO $table (Nom, Prénom, Âge, Email) 
-                VALUES ('$nom', '$prenom', '$age' ,'$email')";
-        $connexion->exec($sql);
+        // FIXME Attention 5 valeurs
+        $req = $connexion->prepare("INSERT INTO $table VALUES (?, ?, ?, ? ,?)");
+        $req->execute(array(NULL, ...$col));
     } catch (PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
+        echo $req . "<br>" . $e->getMessage();
     }
 }
 
 // ANCHOR UPDATE Modifier un utilisateur
 
-function updateUser($dataBase, $table, $id, $nom, $prenom, $age, $email)
+function updateUser($dataBase, $table, $id, ...$col)
 {
     try {
         $connexion = getDatabaseConnexion($dataBase);
-        $sql = "UPDATE $table set 
-                    Nom = '$nom',
-                    Prénom = '$prenom',
-                    Âge = '$age',
-                    Email = '$email' 
-                    where id = '$id' ";
-        $stmt = $connexion->query($sql);
+        // FIXME Attention aux noms des colonnes
+        $req = $connexion->prepare("UPDATE $table SET Nom = ?, Prénom = ?, Âge = ?, Email = ? WHERE id = ? ");
+        $req->execute(array(...$col, $id));
     } catch (PDOException $e) {
-        echo $sql . "<br>" . $e->getMessage();
+        echo $req . "<br>" . $e->getMessage();
     }
 }
 
@@ -90,7 +86,7 @@ function deleteUser($dataBase, $table, $id)
 {
     try {
         $connexion = getDatabaseConnexion($dataBase);
-        $sql = "DELETE from $table where id = '$id' ";
+        $sql = "DELETE FROM $table WHERE id = '$id' ";
         $stmt = $connexion->query($sql);
     } catch (PDOException $e) {
         echo $sql . "<br>" . $e->getMessage();
