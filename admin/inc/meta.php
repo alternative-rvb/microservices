@@ -8,4 +8,4 @@
     <!-- Boostrap icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="<?= WEB_ROOT.'css/master.css' ?>">

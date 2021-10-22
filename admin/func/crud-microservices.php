@@ -122,7 +122,7 @@ function getHeaderTable($table)
 function afficherTableau($headers, $rows)
 {
 ?>
-    <table class="table table-striped table-hover">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <?php
@@ -137,30 +137,33 @@ function afficherTableau($headers, $rows)
         <tbody>
             <?php
             foreach ($rows as $row) :
+                // var_dump(array_key_first($row) ? 'yes' : $row);
             ?>
                 <tr class="position-relative">
-                    <?php
-                    for ($i = 0; $i < count($headers); $i++) :
-                        if ($i == 0) :
-                    ?>
-                            <td scope="col">
-                                <a class="btn btn-link stretched-link text-decoration-none" href="microservices.php?id=<?= $row[$i] ?>"><i class="bi bi-pencil-square"></i> <?= $row[$i] ?></a>
-                            </td>
-                        <?php
 
-                        else :
-                        ?>
                             <td scope="col">
-                                <?= $row[$i] ?>
+                            <a class="btn btn-link stretched-link text-decoration-none" href="microservices.php?id=<?= $row['microservice_id'] ?>"><i class="bi bi-pencil-square"></i> <?= $row['microservice_id'] ?></a> 
                             </td>
-                    <?php
-                        endif;
-                    endfor;
-                    ?>
+                            <td scope="col">
+                                <?= $row['Titre'] ?>
+                            </td>
+                            <td scope="col">
+                                <?= $row['Contenu'] ?>
+                            </td>
+                            <td scope="col">
+                                <?= $row['Prix'] ?>
+                            </td>
+                            <td scope="col">
+                                <?= insertImage($row['Image']) ?>
+                            </td>
+                            <td scope="col">
+                                <?= $row['user_id'] ?>
+                            </td>
                 </tr>
-            <?php
+                <?php
             endforeach;
             ?>
+            <!-- <a class="btn btn-link stretched-link text-decoration-none" href="microservices.php?id=<?= $row[$i] ?>"><i class="bi bi-pencil-square"></i> <?= $row[$i] ?></a> -->
         </tbody>
 
     </table>
