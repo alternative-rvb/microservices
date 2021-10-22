@@ -33,7 +33,7 @@ require "inc/config.php";
 
             ?>
 
-            <a class="btn btn-primary" href="form-microservices.php"><i class="bi bi-plus-square"></i> Ajouter</a>
+            <a class="btn btn-primary" href="microservices.php"><i class="bi bi-plus-square"></i> Ajouter</a>
 
             <?php
             // var_dump($_SESSION);

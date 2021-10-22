@@ -144,7 +144,7 @@ function afficherTableau($headers, $rows)
                         if ($i == 0) :
                     ?>
                             <td scope="col">
-                                <a class="btn btn-link stretched-link text-decoration-none" href="form-microservices.php?id=<?= $row[$i] ?>"><i class="bi bi-pencil-square"></i> <?= $row[$i] ?></a>
+                                <a class="btn btn-link stretched-link text-decoration-none" href="microservices.php?id=<?= $row[$i] ?>"><i class="bi bi-pencil-square"></i> <?= $row[$i] ?></a>
                             </td>
                         <?php
 
