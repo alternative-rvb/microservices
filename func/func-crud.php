@@ -41,7 +41,7 @@ function afficherTableau($rows)
     foreach ($rows as $row) :
 ?>
     <article class="col-md-4 p-2">
-        <div class="border border-dark">
+        <div class="border border-dark h-100">
             <div>
                 <?= insertImage($row['Image'])?>
             </div>
