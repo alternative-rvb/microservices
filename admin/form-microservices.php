@@ -32,29 +32,29 @@ if (!empty($id)) {
 	// var_dump($data);
 	?>
 	<main class="container">
-		<form class="" action="func/create-update.php" method="POST">
+		<form class="" action="func/create-update.php" method="POST" enctype="multipart/form-data">
 
 			<input type="hidden" name="id" value="<?= $id ?>" />
 			<input type="hidden" name="action" value="<?= $action ?>" />
 			<div class="mb-3">
 				<label class="form-label" for="titre">Titre :</label>
-				<input class="form-control" type="text" id="titre" name="titre" value="<?= isset($data['titre']) ? $data['titre'] : NULL ?>">
-			</div>
-			<div class="mb-3">
-				<label class="form-label" for="auteur">Auteur :</label>
-				<input class="form-control" type="text" id="auteur" name="auteur" value="<?= isset($data['auteur']) ? $data['auteur'] : NULL ?>">
+				<input class="form-control" type="text" id="titre" name="titre" value="<?= isset($data['Titre']) ? $data['Titre'] : NULL ?>">
 			</div>
 			<div class="mb-3">
 				<label class="form-label" for="contenu">Contenu :</label>
-				<textarea class="form-control" id="contenu" name="contenu"><?= isset($data['contenu']) ? $data['contenu'] : NULL ?></textarea>
+				<textarea class="form-control" id="contenu" name="contenu"><?= isset($data['Contenu']) ? $data['Contenu'] : NULL ?></textarea>
 			</div>
 			<div class="mb-3">
 				<label class="form-label" for="prix">Prix :</label>
-				<input class="form-control" type="text" name="prix" value="<?= isset($data['prix']) ? $data['prix'] : NULL ?>">
+				<input class="form-control" type="text" name="prix" value="<?= isset($data['Prix']) ? $data['Prix'] : NULL ?>">
 			</div>
 			<div class="mb-3">
 				<label class="form-label" for="userID">Utilisateur :</label>
 				<input class="form-control" type="text" name="userID" value="<?= isset($data['user_id']) ? $data['user_id'] : NULL ?>">
+			</div>
+			<div class="mb-3">
+				<label class="form-label" for="image">Ajouter une image :</label>
+				<input id="image" class="form-control" type="file" name="image" ><br />
 			</div>
 			<button class="btn btn-primary" type="submit"><?= $libelle ?></button>
 		</form>

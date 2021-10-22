@@ -54,15 +54,15 @@ function readUser($table, $id)
 
 // ANCHOR CREATE Créer un utilisateur
 
-function createUser($table, $titre, $contenu, $prix, $userID)
+function createUser($table, $titre, $contenu, $prix, $image, $userID)
 {
 
     try {
         $connexion = getDatabaseConnexion();
         // FIXME Attention 5 valeurs
-        $sql = "INSERT INTO $table (Titre, Contenu, Prix, user_id) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO $table (Titre, Contenu, Prix, Image, user_id) VALUES (?, ?, ?, ?, ?)";
         $req = $connexion->prepare($sql);
-        $req->execute(array($titre, $contenu, $prix, $userID));
+        $req->execute(array($titre, $contenu, $prix, $image, $userID));
     } catch (PDOException $e) {
         echo $req . "<br>" . $e->getMessage();
     }
@@ -70,13 +70,20 @@ function createUser($table, $titre, $contenu, $prix, $userID)
 
 // ANCHOR UPDATE Modifier un utilisateur
 
-function updateUser($table, $id, $titre, $contenu, $prix, $userID)
+function updateUser($table, $id, $titre, $contenu, $prix, $image, $userID)
 {
     try {
         $connexion = getDatabaseConnexion();
         // FIXME Attention aux noms des colonnes
-        $req = $connexion->prepare("UPDATE $table SET Titre = ?, Contenu = ?, Prix = ?, user_id = ? WHERE microservice_id = ? ");
-        $req->execute(array($titre, $contenu, $prix, $userID, $id));
+        if (!empty($image)) {
+            $sql="UPDATE $table SET Titre = ?, Contenu = ?, Prix = ?, Image = ?, user_id = ? WHERE microservice_id = ? ";
+            $req = $connexion->prepare($sql);
+            $req->execute(array($titre, $contenu, $prix, $image, $userID, $id));
+        }else {
+            $sql="UPDATE $table SET Titre = ?, Contenu = ?, Prix = ?,  user_id = ? WHERE microservice_id = ? ";
+            $req = $connexion->prepare($sql);
+            $req->execute(array($titre, $contenu, $prix, $userID, $id));
+        }
     } catch (PDOException $e) {
         echo $req . "<br>" . $e->getMessage();
     }
