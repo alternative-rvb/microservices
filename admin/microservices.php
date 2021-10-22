@@ -1,6 +1,6 @@
 <?php
 require 'inc/config.php';
-include SITE_ROOT . '/admin/func/func-crud-microservices.php';
+include SITE_ROOT . '/admin/func/crud-microservices.php';
 
 
 // var_dump($id);
@@ -32,7 +32,7 @@ if (!empty($id)) {
 	// var_dump($data);
 	?>
 	<main class="container">
-		<form class="" action="func/create-update.php" method="POST" enctype="multipart/form-data">
+		<form class="" action="func/control.php" method="POST" enctype="multipart/form-data">
 
 			<input type="hidden" name="id" value="<?= $id ?>" />
 			<input type="hidden" name="action" value="<?= $action ?>" />
@@ -60,7 +60,7 @@ if (!empty($id)) {
 		</form>
 		<br>
 		<?php if ($action != "CREATE") : ?>
-			<form class="" action="func/create-update.php" method="POST">
+			<form class="" action="func/control.php" method="POST">
 				<input type="hidden" name="action" value="DELETE" />
 				<input type="hidden" name="id" value="<?= $data['microservice_id'] ?>" />
 				<button class="btn btn-danger" type="submit"><i class="bi bi-trash"></i> Supprimer</button>

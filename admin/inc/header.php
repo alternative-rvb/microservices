@@ -1,6 +1,6 @@
 <?php
-include 'func/func-custom.php';
-include 'func/func-nav.php';
+include SITE_ROOT.'admin/func/functions.php';
+include SITE_ROOT.'admin/func/nav.php';
 
 ?>
 <header class="bg-dark mb-5 p-2">

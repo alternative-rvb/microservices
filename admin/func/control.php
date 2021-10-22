@@ -1,8 +1,8 @@
 <?php
 session_start();
 require '../inc/config.php';
-include SITE_ROOT . 'admin/func/func-custom.php';
-include SITE_ROOT . 'admin/func/func-crud-microservices.php';
+include SITE_ROOT . 'admin/func/functions.php';
+include SITE_ROOT . 'admin/func/crud-microservices.php';
 
 echo '$_REQUEST';
 var_dump($_REQUEST);

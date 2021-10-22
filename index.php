@@ -7,7 +7,7 @@ require 'admin/inc/config.php'
 
 <head>
     <?php
-    include SITE_ROOT . "/inc/meta.php"
+    include SITE_ROOT . 'admin/inc/meta.php'
     ?>
     <title>Microservices</title>
 </head>
@@ -15,7 +15,7 @@ require 'admin/inc/config.php'
 
 <body>
     <?php
-    include SITE_ROOT . "/inc/header.php"
+    include SITE_ROOT . 'admin/inc/header.php'
     ?>
     <main class="container p-1">
         <div class="row">
@@ -23,13 +23,13 @@ require 'admin/inc/config.php'
         </div>
         <div class="row">
             <?php 
-                include 'admin/func/func-home.php';
+                include 'admin/func/home.php';
                 afficherTableau(readAllUsers('microservices'));
             ?>
         </div>
     </main>
     <?php
-    include SITE_ROOT . "/inc/footer.php"
+    include SITE_ROOT . "admin/inc/footer.php"
     ?>
 </body>
 

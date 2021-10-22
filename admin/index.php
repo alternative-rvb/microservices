@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "inc/config.php";
+include 'inc/config.php'
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -27,7 +27,7 @@ require "inc/config.php";
 
         <div class="row">
             <?php
-            include 'func/func-crud-microservices.php';
+            include 'func/crud-microservices.php';
 
             afficherTableau(getHeaderTable('microservices'), readAllUsers('microservices'));
 
