@@ -1,3 +1,4 @@
 <?php 
 define('SITE_ROOT', __DIR__);
-// echo __DIR__;
+define('WEB_ROOT', '/CRUD/');
+
