@@ -27,7 +27,7 @@ require "inc/config.php";
 
         <div class="row">
             <?php
-            include 'func/func-crud.php';
+            include 'func/func-crud-microservices.php';
 
             afficherTableau(getHeaderTable('microservices'), readAllUsers('microservices'));
 

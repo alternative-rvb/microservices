@@ -1,6 +1,6 @@
 <?php
 require 'inc/config.php';
-include SITE_ROOT . '/admin/func/func-crud.php';
+include SITE_ROOT . '/admin/func/func-crud-microservices.php';
 
 
 // var_dump($id);

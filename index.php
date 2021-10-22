@@ -23,7 +23,7 @@ require 'admin/inc/config.php'
         </div>
         <div class="row">
             <?php 
-                include 'func/func-crud.php';
+                include 'admin/func/func-home.php';
                 afficherTableau(readAllUsers('microservices'));
             ?>
         </div>
