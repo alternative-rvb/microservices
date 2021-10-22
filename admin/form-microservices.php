@@ -7,7 +7,7 @@ include __DIR__ . '/func/func-crud.php';
 
 $id = isset($_GET["id"]) ? $_GET["id"] : NULL;
 if (!empty($id)) {
-	$data = readUser('php-users', 'microservices', $id);
+	$data = readUser('microservices', $id);
 	$action = "UPDATE";
 	$libelle = "Mettre a jour";
 } else {

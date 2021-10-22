@@ -2,8 +2,9 @@
 
 // ANCHOR Connexion à la Base de donnée
 
-function getDatabaseConnexion($dataBase)
+function getDatabaseConnexion()
 {
+    $dataBase = 'php-users';
     $host = 'localhost';
     $user = 'root';
     $pass = '';
@@ -19,10 +20,10 @@ function getDatabaseConnexion($dataBase)
 
 // ANCHOR READ Afficher tous les utilisateurs
 
-function readAllUsers($dataBase, $table)
+function readAllUsers($table)
 {
     try {
-        $connexion = getDatabaseConnexion($dataBase);
+        $connexion = getDatabaseConnexion();
         $sql = "SELECT * FROM $table";
         // -> appel d'une méthode - voir objet - on accède à une fonction
         $req = $connexion->query($sql);
@@ -35,10 +36,10 @@ function readAllUsers($dataBase, $table)
 
 // ANCHOR READ Afficher un utilisateur
 
-function readUser($dataBase, $table, $id)
+function readUser($table, $id)
 {
     try {
-        $connexion = getDatabaseConnexion($dataBase);
+        $connexion = getDatabaseConnexion();
         $sql = "SELECT * from $table where microservice_id = '$id' ";
         $req = $connexion->query($sql);
         $row = $req->fetchAll();
@@ -53,14 +54,15 @@ function readUser($dataBase, $table, $id)
 
 // ANCHOR CREATE Créer un utilisateur
 
-function createUser($dataBase, $table, ...$col)
+function createUser($table, $titre, $auteur, $contenu, $prix)
 {
 
     try {
-        $connexion = getDatabaseConnexion($dataBase);
+        $connexion = getDatabaseConnexion();
         // FIXME Attention 5 valeurs
-        $req = $connexion->prepare("INSERT INTO $table VALUES (?, ?, ?, ? ,?)");
-        $req->execute(array(NULL, ...$col));
+        $sql = "INSERT INTO $table (titre, auteur, contenu, prix, user_id) VALUES (?, ?, ?, ?, ?)";
+        $req = $connexion->prepare($sql);
+        $req->execute(array($titre, $auteur, $contenu, $prix, 0));
     } catch (PDOException $e) {
         echo $req . "<br>" . $e->getMessage();
     }
@@ -68,13 +70,13 @@ function createUser($dataBase, $table, ...$col)
 
 // ANCHOR UPDATE Modifier un utilisateur
 
-function updateUser($dataBase, $table, $id, ...$col)
+function updateUser($table, $id, $titre, $auteur, $contenu, $prix)
 {
     try {
-        $connexion = getDatabaseConnexion($dataBase);
+        $connexion = getDatabaseConnexion();
         // FIXME Attention aux noms des colonnes
         $req = $connexion->prepare("UPDATE $table SET titre = ?, auteur = ?, contenu = ?, prix = ? WHERE microservice_id = ? ");
-        $req->execute(array(...$col, $id));
+        $req->execute(array($titre, $auteur, $contenu, $prix, $id));
     } catch (PDOException $e) {
         echo $req . "<br>" . $e->getMessage();
     }
@@ -82,10 +84,10 @@ function updateUser($dataBase, $table, $id, ...$col)
 
 // ANCHOR DELETE Supprimer un utilisateur
 
-function deleteUser($dataBase, $table, $id)
+function deleteUser($table, $id)
 {
     try {
-        $connexion = getDatabaseConnexion($dataBase);
+        $connexion = getDatabaseConnexion();
         $sql = "DELETE FROM $table WHERE microservice_id = '$id' ";
         $req = $connexion->query($sql);
     } catch (PDOException $e) {
@@ -95,12 +97,11 @@ function deleteUser($dataBase, $table, $id)
 
 // ANCHOR Afficher l'en-tête de la table
 
-function getHeaderTable($dataBase, $table)
+function getHeaderTable($table)
 {
     try {
-        $connexion = getDatabaseConnexion($dataBase);
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='$dataBase' 
-        AND TABLE_NAME = '$table'";
+        $connexion = getDatabaseConnexion();
+        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='php-users' AND TABLE_NAME = '$table'";
         $req = $connexion->query($sql);
         $row = $req->fetchAll();
         return $row;

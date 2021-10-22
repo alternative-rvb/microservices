@@ -22,17 +22,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	session_unset();
 	switch ($action):
 		case 'CREATE':
-			createUser('php-users', 'microservices', $titre, $auteur, $contenu, $prix);
+			createUser('microservices', $titre, $auteur, $contenu, $prix);
 			echo $_SESSION['message'] = '<p class="text-success my-2">Utilisateur créé</p>';
 			header('Location: ../index.php');
 			break;
 		case 'UPDATE':
-			updateUser('php-users', 'microservices', $id, $titre, $auteur, $contenu, $prix);
+			updateUser('microservices', $id, $titre, $auteur, $contenu, $prix);
 			echo $_SESSION['message'] = '<p class="text-success my-2">Utilisateur mis à jour</p>';
 			header('Location: ../index.php');
 			break;
 		case 'DELETE':
-			deleteUser('php-users', 'microservices', $id);
+			deleteUser('microservices', $id);
 			echo $_SESSION['message'] = '<p class="text-success my-2">Utilisateur supprimé</p>';
 			header('Location: ../index.php');
 			break;

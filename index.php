@@ -24,7 +24,7 @@ require __DIR__ . "/inc/config.php"
         <div class="row">
             <?php 
                 include 'func/func-crud.php';
-                afficherTableau(readAllUsers('php-users', 'microservices'));
+                afficherTableau(readAllUsers('microservices'));
             ?>
         </div>
     </main>

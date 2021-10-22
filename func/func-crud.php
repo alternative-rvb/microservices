@@ -2,8 +2,9 @@
 
 // ANCHOR Connexion à la Base de donnée
 
-function getDatabaseConnexion($dataBase)
+function getDatabaseConnexion()
 {
+    $dataBase= 'php-users';
     $host = 'localhost';
     $user = 'root';
     $pass = '';
@@ -19,10 +20,10 @@ function getDatabaseConnexion($dataBase)
 
 // ANCHOR READ Afficher tous les utilisateurs
 
-function readAllUsers($dataBase, $table)
+function readAllUsers($table)
 {
     try {
-        $connexion = getDatabaseConnexion($dataBase);
+        $connexion = getDatabaseConnexion();
         $sql = "SELECT * FROM $table";
         // -> appel d'une méthode - voir objet - on accède à une fonction
         $req = $connexion->query($sql);

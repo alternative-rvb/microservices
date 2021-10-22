@@ -29,7 +29,7 @@ require __DIR__ . "/inc/config.php";
             <?php
             include 'func/func-crud.php';
 
-            afficherTableau(getHeaderTable('php-users', 'microservices'), readAllUsers('php-users', 'microservices'));
+            afficherTableau(getHeaderTable('microservices'), readAllUsers('microservices'));
 
             ?>
 
