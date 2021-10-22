@@ -10,6 +10,7 @@ $filtres[] = 'inc';
 $filtres[] = 'README.md';
 $filtres[] = 'index.php';
 $filtres[] = 'admin';
+$filtres[] = 'uploads';
 
 function creationMenu($filtres)
 {
