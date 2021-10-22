@@ -72,8 +72,8 @@ function moveImage($image) {
     }
 }
 
-function insertimage($image) {
+function insertImage($image) {
     if (!empty($image)) {
-        echo '<img src="'.$image.'" alt="Lorem" width="150">';
+        echo '<img class="img-fluid" src="'.IMAGES_ROOT.$image.'" alt="Lorem">';
     }
 }
