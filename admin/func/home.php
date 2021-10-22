@@ -24,7 +24,7 @@ function readAllUsers($tableMicroservices, $tableusers)
 {
     try {
         $connexion = getDatabaseConnexion();
-        $sql = "SELECT * FROM $tableMicroservices LEFT JOIN $tableusers ON $tableMicroservices.user_id = $tableusers.user_id ORDER BY microservice_id DESC";
+        $sql = "SELECT Titre, Contenu, Prix, Image, Prénom, Nom FROM $tableMicroservices LEFT JOIN $tableusers ON $tableMicroservices.user_id = $tableusers.user_id ORDER BY microservice_id DESC";
         // -> appel d'une méthode - voir objet - on accède à une fonction
         $req = $connexion->query($sql);
         $row = $req->fetchAll();
@@ -47,7 +47,7 @@ function afficherTableau($rows)
             </div>
             <div class="p-2">
                 <h3><?= $row['Titre'] ?></h3>
-                <p class="fw-bolder"><i class="bi bi-person-circle"></i> <?= $row['Prénom'] ?></p>
+                <p class="fw-bolder"><i class="bi bi-person-circle"></i> <?= $row['Prénom']?> <?=$row['Nom'] ?></p>
                 <p><?= $row['Contenu'] ?></p>
                 <p>
                     <a class="btn btn-light" href="#">À partir de <?= $row['Prix'] ?> €</a>
