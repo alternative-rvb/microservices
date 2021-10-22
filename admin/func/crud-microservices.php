@@ -4,7 +4,7 @@
 
 function getDatabaseConnexion()
 {
-    $dataBase = '1bdd';
+    $dataBase = 'microservices';
     $host = 'localhost';
     $user = 'root';
     $pass = '';
@@ -108,7 +108,7 @@ function getHeaderTable($table)
 {
     try {
         $connexion = getDatabaseConnexion();
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='1bdd' AND TABLE_NAME = '$table'";
+        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='microservices' AND TABLE_NAME = '$table'";
         $req = $connexion->query($sql);
         $row = $req->fetchAll();
         return $row;
