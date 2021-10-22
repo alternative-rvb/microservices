@@ -25,8 +25,6 @@ function creationMenu($filtres)
             </button>
             <div id="navbarSupportedContent" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <a class="nav-link <?= activeLink('index.php') ?>" href="<?= WEB_ROOT ?>">Home</a>
-
                     <?php
                     foreach ($links as $link) :
                         // Filtres 
