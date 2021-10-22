@@ -52,6 +52,10 @@ if (!empty($id)) {
 				<label class="form-label" for="prix">Prix :</label>
 				<input class="form-control" type="text" name="prix" value="<?= isset($data['prix']) ? $data['prix'] : NULL ?>">
 			</div>
+			<div class="mb-3">
+				<label class="form-label" for="userID">Utilisateur :</label>
+				<input class="form-control" type="text" name="userID" value="<?= isset($data['user_id']) ? $data['user_id'] : NULL ?>">
+			</div>
 			<button class="btn btn-primary" type="submit"><?= $libelle ?></button>
 		</form>
 		<br>

@@ -43,7 +43,7 @@ function afficherTableau($rows)
     <div class="col-md-4 p-2">
         <div class="border border-dark p-2 h-100">
             <h3><?= $row['titre'] ?></h3>
-            <p><small><?= $row['auteur'] ?></small></p>
+            <p><small><?= $row['user_id'] ?></small></p>
             <p><?= $row['contenu'] ?></p>
             <p>
                 <a class="btn btn-light" href="#">À partir de <?= $row['prix'] ?> €</a>
