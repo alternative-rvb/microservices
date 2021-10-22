@@ -42,7 +42,7 @@ if (!empty($id)) {
 			</div>
 			<div class="mb-3">
 				<label class="form-label" for="contenu">Contenu :</label>
-				<textarea class="form-control" id="contenu" name="contenu"><?= isset($data['Contenu']) ? $data['Contenu'] : NULL ?></textarea>
+				<textarea class="form-control" id="contenu" name="contenu" style="min-height:20vh;"><?= isset($data['Contenu']) ? $data['Contenu'] : NULL ?></textarea>
 			</div>
 			<div class="mb-3">
 				<label class="form-label" for="prix">Prix :</label>
