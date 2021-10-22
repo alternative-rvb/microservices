@@ -9,7 +9,7 @@ require __DIR__ . "/inc/config.php"
     <?php
     include __DIR__ . "/inc/meta.php"
     ?>
-    <title>PHP training</title>
+    <title>Microservices</title>
 </head>
 
 
@@ -19,7 +19,7 @@ require __DIR__ . "/inc/config.php"
     ?>
     <main class="container p-1">
         <div class="row">
-            <h1>5 EUROS</h1>
+            <h1>Microservices</h1>
         </div>
         <div class="row">
             <?php 
