@@ -4,7 +4,7 @@
 
 function getDatabaseConnexion()
 {
-    $dataBase= 'php-users';
+    $dataBase= '1bdd';
     $host = 'localhost';
     $user = 'root';
     $pass = '';

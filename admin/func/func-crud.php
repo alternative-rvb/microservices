@@ -4,7 +4,7 @@
 
 function getDatabaseConnexion()
 {
-    $dataBase = 'php-users';
+    $dataBase = '1bdd';
     $host = 'localhost';
     $user = 'root';
     $pass = '';
@@ -60,7 +60,7 @@ function createUser($table, $titre, $contenu, $prix, $userID)
     try {
         $connexion = getDatabaseConnexion();
         // FIXME Attention 5 valeurs
-        $sql = "INSERT INTO $table (titre, contenu, prix, user_id) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO $table (Titre, Contenu, Prix, user_id) VALUES (?, ?, ?, ?)";
         $req = $connexion->prepare($sql);
         $req->execute(array($titre, $contenu, $prix, $userID));
     } catch (PDOException $e) {
@@ -75,7 +75,7 @@ function updateUser($table, $id, $titre, $contenu, $prix, $userID)
     try {
         $connexion = getDatabaseConnexion();
         // FIXME Attention aux noms des colonnes
-        $req = $connexion->prepare("UPDATE $table SET titre = ?, contenu = ?, prix = ?, user_id = ? WHERE microservice_id = ? ");
+        $req = $connexion->prepare("UPDATE $table SET Titre = ?, Contenu = ?, Prix = ?, user_id = ? WHERE microservice_id = ? ");
         $req->execute(array($titre, $contenu, $prix, $userID, $id));
     } catch (PDOException $e) {
         echo $req . "<br>" . $e->getMessage();
@@ -101,7 +101,7 @@ function getHeaderTable($table)
 {
     try {
         $connexion = getDatabaseConnexion();
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='php-users' AND TABLE_NAME = '$table'";
+        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='1bdd' AND TABLE_NAME = '$table'";
         $req = $connexion->query($sql);
         $row = $req->fetchAll();
         return $row;
