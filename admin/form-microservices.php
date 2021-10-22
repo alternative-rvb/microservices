@@ -1,6 +1,6 @@
 <?php
-require __DIR__ . '/inc/config.php';
-include __DIR__ . '/func/func-crud.php';
+require 'inc/config.php';
+include SITE_ROOT . '/admin/func/func-crud.php';
 
 
 // var_dump($id);
@@ -21,14 +21,14 @@ if (!empty($id)) {
 
 <head>
 	<?php
-	include __DIR__ . "/inc/meta.php";
+	include SITE_ROOT . "/admin/inc/meta.php";
 	?>
 	<title>CREATE UPDATE</title>
 </head>
 
 <body>
 	<?php
-	require __DIR__ . "/inc/header.php";
+	require SITE_ROOT . "/admin/inc/header.php";
 	// var_dump($data);
 	?>
 	<main class="container">
@@ -68,7 +68,7 @@ if (!empty($id)) {
 		<?php endif ?>
 	</main>
 	<?php
-	include __DIR__ . "/inc/footer.php";
+	include SITE_ROOT . "/admin/inc/footer.php";
 	?>
 </body>
 

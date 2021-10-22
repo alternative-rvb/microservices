@@ -1,8 +1,8 @@
 <?php
 session_start();
-require __DIR__ . '/../inc/config.php';
-include __DIR__ . './func-custom.php';
-include __DIR__ . './func-crud.php';
+require '../inc/config.php';
+include SITE_ROOT . 'admin/func/func-custom.php';
+include SITE_ROOT . 'admin/func/func-crud.php';
 
 echo '$_REQUEST';
 var_dump($_REQUEST);

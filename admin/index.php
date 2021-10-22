@@ -1,13 +1,13 @@
 <?php
 session_start();
-require __DIR__ . "/inc/config.php";
+require "inc/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <?php
-    include __DIR__ . "/inc/meta.php";
+    include SITE_ROOT . "/admin/inc/meta.php";
     ?>
     <title>Microservices</title>
 </head>
@@ -15,7 +15,7 @@ require __DIR__ . "/inc/config.php";
 
 <body>
     <?php
-    include __DIR__ . "/inc/header.php";
+    include SITE_ROOT . "/admin/inc/header.php";
     ?>
     <main class="container p-1">
         <div class="row">
@@ -47,7 +47,7 @@ require __DIR__ . "/inc/config.php";
 
     </main>
     <?php
-    include __DIR__ . "/inc/footer.php";
+    include SITE_ROOT . "/admin/inc/footer.php";
     ?>
 </body>
 
