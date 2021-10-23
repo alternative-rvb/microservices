@@ -1,10 +1,8 @@
 <?php
-
 // ANCHOR Connexion à la Base de donnée
-
 function getDatabaseConnexion()
 {
-    $dataBase= 'microservices';
+    $dataBase = 'microservices';
     $host = 'localhost';
     $user = 'root';
     $pass = '';
@@ -17,9 +15,7 @@ function getDatabaseConnexion()
         die();
     }
 }
-
 // ANCHOR READ Afficher tous les utilisateurs
-
 function readAllUsers($tableMicroservices, $tableusers)
 {
     try {
@@ -33,28 +29,34 @@ function readAllUsers($tableMicroservices, $tableusers)
         echo $sql . "<br>" . $e->getMessage();
     }
 }
-
 // ANCHOR Afficher un tableau
-
 function afficherTableau($rows)
 {
     foreach ($rows as $row) :
 ?>
-    <article class="col-md-4 p-2">
-        <div class="border border-dark h-100">
-            <div>
-                <?= insertImage($row['Image'])?>
+        <article class="col-md-4 p-2">
+            <div class="border border-dark h-100">
+                <div>
+                    <?= insertImage($row['Image']) ?>
+                </div>
+                <div class="p-2">
+                    <h3><?= $row['Titre'] ?></h3>
+                    <p class="fw-bolder"><i class="bi bi-person-circle"></i>
+                        <?php
+                        if (!empty($row['Prénom']) && !empty($row['Nom'])) {
+                            echo $row['Prénom'] . ' ' . $row['Nom'];
+                        } else {
+                            echo 'Anonymous';
+                        }
+                        ?>
+                    </p>
+                    <p><?= $row['Contenu'] ?></p>
+                    <p>
+                        <a class="btn btn-light" href="#">À partir de <?= $row['Prix'] ?> €</a>
+                    </p>
+                </div>
             </div>
-            <div class="p-2">
-                <h3><?= $row['Titre'] ?></h3>
-                <p class="fw-bolder"><i class="bi bi-person-circle"></i> <?= $row['Prénom']?> <?=$row['Nom'] ?></p>
-                <p><?= $row['Contenu'] ?></p>
-                <p>
-                    <a class="btn btn-light" href="#">À partir de <?= $row['Prix'] ?> €</a>
-                </p>
-            </div>
-        </div>
-    </article>
+        </article>
 <?php
-endforeach;
+    endforeach;
 }

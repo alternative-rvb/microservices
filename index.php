@@ -17,7 +17,7 @@ require 'admin/inc/config.php'
     <?php
     include SITE_ROOT . 'admin/inc/header.php'
     ?>
-    <main class="container p-1">
+    <main class="container">
         <div class="row">
             <h1>Microservices</h1>
         </div>

@@ -17,7 +17,7 @@ include 'inc/config.php'
     <?php
     include SITE_ROOT . "/admin/inc/header.php";
     ?>
-    <main class="container p-1">
+    <main class="container">
         <div class="row">
             <h1>Microservices</h1>
             <?php
@@ -37,10 +37,10 @@ include 'inc/config.php'
 
             <?php
             // var_dump($_SESSION);
-            if (!empty($_SESSION)) {
-                echo $_SESSION['message'];
-                session_unset();
-            }
+            
+                echo !empty($_SESSION['message']) ? $_SESSION['message'] : '';
+                // session_unset();
+            
 
             ?>
         </div>

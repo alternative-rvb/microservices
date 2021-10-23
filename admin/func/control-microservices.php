@@ -21,22 +21,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$userID = (int) test_input($_POST['userID']);
 	}
 
-	session_unset();
+	// session_unset();
 	switch ($action):
 		case 'CREATE':
 			createUser('microservices', $titre, $contenu, $prix, $image, $userID);
 			echo $_SESSION['message'] = '<p class="text-success my-2">Utilisateur créé</p>';
-			header('Location: ../index.php');
+			header('Location:'.WEB_ROOT.'admin/');
 			break;
 		case 'UPDATE':
 			updateUser('microservices', $id, $titre, $contenu, $prix, $image, $userID);
 			echo $_SESSION['message'] = '<p class="text-success my-2">Utilisateur mis à jour</p>';
-			header('Location: ../index.php');
+			header('Location:'.WEB_ROOT.'admin/');
 			break;
 		case 'DELETE':
 			deleteUser('microservices', $id);
 			echo $_SESSION['message'] = '<p class="text-success my-2">Utilisateur supprimé</p>';
-			header('Location: ../index.php');
+			header('Location:'.WEB_ROOT.'admin/');
 			break;
 
 		default:
@@ -46,4 +46,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<a href='../index.php'>Liste des utilisateurs</a>
+<a href="<?= WEB_ROOT.'admin/' ?>">Admin</a>
