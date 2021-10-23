@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : ven. 22 oct. 2021 à 22:48
+-- Généré le : sam. 23 oct. 2021 à 13:53
 -- Version du serveur : 5.7.33
 -- Version de PHP : 7.4.24
 
@@ -41,14 +41,13 @@ CREATE TABLE `microservices` (
 --
 
 INSERT INTO `microservices` (`microservice_id`, `Titre`, `Contenu`, `Prix`, `Image`, `user_id`) VALUES
-(1, 'Microservice 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '7.99', 'placeholder-photo.jpg', 1),
+(1, 'Microservice 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', '5.99', 'placeholder-photo.jpg', 1),
 (2, 'Microservice 2', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Fusce ut placerat orci nulla pellentesque.', '7.99', 'placeholder-photo.jpg', 1),
 (3, 'Microservice 3', 'Consectetur adipiscing elit pellentesque habitant morbi tristique.', '5.50', 'placeholder-photo.jpg', 0),
 (4, 'Microservice 4', 'Diam maecenas ultricies mi eget. Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Vestibulum sed arcu non odio euismod lacinia at quis risus.', '2.99', 'placeholder-photo.jpg', 0),
 (5, 'Microservice 5', 'Eu mi bibendum neque egestas congue quisque. Pellentesque elit ullamcorper dignissim cras.', '0.00', 'placeholder-photo.jpg', 0),
 (43, 'Intégrer des icones', 'AAAA', '0.00', 'placeholder-photo.jpg', 0),
-(50, 'Kit de survie pour le web', 'Test', '0.00', 'placeholder-photo.jpg', 0),
-(51, 'Kit de survie pour le web', 'ds', '8.00', 'placeholder-photo.jpg', 0);
+(48, 'MS', 'Lorem', '1.00', 'placeholder-photo.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -70,7 +69,7 @@ CREATE TABLE `utilisateurs` (
 --
 
 INSERT INTO `utilisateurs` (`user_id`, `Nom`, `Prénom`, `Email`, `Password`, `Rôle`) VALUES
-(1, 'B', 'FIFI', '', NULL, NULL),
+(1, 'Muche', 'Mich', 'michmuche@example.com', '123456', 1),
 (9, 'D', 'Domi', '', NULL, NULL),
 (10, 'Muche', 'Mich', '', NULL, NULL),
 (19, '', '', '', NULL, NULL),
@@ -112,13 +111,13 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `microservices`
 --
 ALTER TABLE `microservices`
-  MODIFY `microservice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `microservice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
