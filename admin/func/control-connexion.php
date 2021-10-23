@@ -17,12 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     if (empty($email)) {
-        $_SESSION['emailError'] = '⚠ Veuillez entrer votre adresse e-mail';
+        $_SESSION['Message'] = '⚠ Veuillez entrer votre adresse e-mail';
         $valid = false;
+            header('Location:'.WEB_ROOT.'connexion.php');
     }
     if (empty($password)) {
-        $_SESSION['passwordError'] = '⚠ veuillez entrer votre Mot de passe';
+        $_SESSION['Message'] = '⚠ Veuillez entrer votre Mot de passe';
         $valid = false;
+            header('Location:'.WEB_ROOT.'connexion.php');
     }
 
     if ($valid) {
@@ -39,7 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 }
             }
         } else {
-            $_SESSION['connexionError'] = "⚠ Identifiant ou Mot de passe inconnu";
+            $_SESSION['Message'] = "⚠ Identifiant ou Mot de passe inconnu";
+            header('Location:'.WEB_ROOT.'connexion.php');
         }
     }
 }
