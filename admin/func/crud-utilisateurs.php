@@ -4,7 +4,7 @@
 
 function getDatabaseConnexion()
 {
-    $dataBase = 'microservices';
+    $dataBase = 'm2';
     $host = 'localhost';
     $user = 'root';
     $pass = '';

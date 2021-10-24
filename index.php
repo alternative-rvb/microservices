@@ -24,7 +24,7 @@ require 'admin/inc/config.php'
         <div class="row">
             <?php 
                 include 'admin/func/home.php';
-                afficherTableau(readAllUsers('microservices','utilisateurs'));
+                afficherTableau(readAllUsers('microservices','utilisateurs','categories'));
             ?>
         </div>
     </main>

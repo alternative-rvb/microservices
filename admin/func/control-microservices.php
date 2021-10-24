@@ -19,17 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$prix = (float)test_input($_POST['prix']);
 		$image = test_input(moveImage($_FILES['image']));
 		$userID = (int) test_input($_POST['userID']);
+		$categoryID = (int) test_input($_POST['categoryID']);
 	}
 
+	// var_dump( $id,$titre, $contenu, $prix, $image, $userID, $categoryID);
 	// session_unset();
 	switch ($action):
 		case 'CREATE':
-			createUser('microservices', $titre, $contenu, $prix, $image, $userID);
+			createUser('microservices', $titre, $contenu, $prix, $image, $userID, $categoryID);
 			echo $_SESSION['message'] = '<p class="text-success my-2">Utilisateur créé</p>';
 			header('Location:'.WEB_ROOT.'admin/');
 			break;
 		case 'UPDATE':
-			updateUser('microservices', $id, $titre, $contenu, $prix, $image, $userID);
+			updateUser('microservices', $id, $titre, $contenu, $prix, $image, $userID, $categoryID);
 			echo $_SESSION['message'] = '<p class="text-success my-2">Utilisateur mis à jour</p>';
 			header('Location:'.WEB_ROOT.'admin/');
 			break;

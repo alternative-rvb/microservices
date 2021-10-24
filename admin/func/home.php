@@ -2,7 +2,7 @@
 // ANCHOR Connexion à la Base de donnée
 function getDatabaseConnexion()
 {
-    $dataBase = 'microservices';
+    $dataBase = 'm2';
     $host = 'localhost';
     $user = 'root';
     $pass = '';
@@ -16,11 +16,11 @@ function getDatabaseConnexion()
     }
 }
 // ANCHOR READ Afficher tous les utilisateurs
-function readAllUsers($tableMicroservices, $tableusers)
+function readAllUsers($tableMicroservices, $tableUsers, $tableCategories)
 {
     try {
         $connexion = getDatabaseConnexion();
-        $sql = "SELECT Titre, Contenu, Prix, Image, Prénom, Nom FROM $tableMicroservices LEFT JOIN $tableusers ON $tableMicroservices.user_id = $tableusers.user_id ORDER BY microservice_id DESC";
+        $sql = "SELECT $tableMicroservices.Titre, $tableMicroservices.Contenu, $tableMicroservices.Prix, $tableMicroservices.Image, $tableUsers.Prénom, $tableUsers.Nom AS uName, $tableCategories.Nom AS uCat FROM $tableMicroservices LEFT JOIN $tableUsers ON $tableMicroservices.user_id = $tableUsers.user_id LEFT JOIN $tableCategories ON $tableMicroservices.category_id = $tableCategories.category_id ORDER BY microservice_id DESC";
         // -> appel d'une méthode - voir objet - on accède à une fonction
         $req = $connexion->query($sql);
         $row = $req->fetchAll();
@@ -41,14 +41,20 @@ function afficherTableau($rows)
                 </div>
                 <div class="p-2">
                     <h3><?= $row['Titre'] ?></h3>
-                    <p class="fw-bolder"><i class="bi bi-person-circle"></i>
-                        <?php
-                        if (!empty($row['Prénom']) && !empty($row['Nom'])) {
-                            echo $row['Prénom'] . ' ' . $row['Nom'];
-                        } else {
-                            echo 'Anonymous';
-                        }
-                        ?>
+
+                    <?php
+                    if (!empty($row['Prénom']) && !empty($row['uName']) && !empty($row['uCat'])) :
+                    ?>
+                        <p class="fw-bolder">
+                            <i class="bi bi-person-circle"></i> <?= $row['Prénom'] ?> <?= $row['uName'] ?> <i class="bi bi-tag-fill"></i> <?= $row['uCat'] ?>
+                        </p>
+                    <?php
+                    else :
+                    ?>
+                        <p>Anonymous</p>
+                    <?php
+                    endif;
+                    ?>
                     </p>
                     <p><?= $row['Contenu'] ?></p>
                     <p>

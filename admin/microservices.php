@@ -60,6 +60,10 @@ if (!empty($id)) {
 					<input class="form-control" type="text" name="userID" value="<?= isset($data['user_id']) ? $data['user_id'] : NULL ?>">
 				</div>
 				<div class="mb-3">
+					<label class="form-label" for="categoryID">Category :</label>
+					<input class="form-control" type="text" name="categoryID" value="<?= isset($data['category_id']) ? $data['category_id'] : NULL ?>">
+				</div>
+				<div class="mb-3">
 					<label class="form-label" for="image">Ajouter une image :</label>
 					<input id="image" class="form-control" type="file" name="image"><br />
 				</div>

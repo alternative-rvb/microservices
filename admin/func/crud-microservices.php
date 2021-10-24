@@ -4,7 +4,7 @@
 
 function getDatabaseConnexion()
 {
-    $dataBase = 'microservices';
+    $dataBase = 'm2';
     $host = 'localhost';
     $user = 'root';
     $pass = '';
@@ -54,15 +54,15 @@ function readUser($table, $id)
 
 // ANCHOR CREATE Créer un utilisateur
 
-function createUser($table, $titre, $contenu, $prix, $image, $userID)
+function createUser($table, $titre, $contenu, $prix, $image, $userID, $categoryID)
 {
 
     try {
         $connexion = getDatabaseConnexion();
         // FIXME Attention 5 valeurs
-        $sql = "INSERT INTO $table (Titre, Contenu, Prix, Image, user_id) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO $table (Titre, Contenu, Prix, Image, user_id, category_id) VALUES (?, ?, ?, ?, ?, ?)";
         $req = $connexion->prepare($sql);
-        $req->execute(array($titre, $contenu, $prix, $image, $userID));
+        $req->execute(array($titre, $contenu, $prix, $image, $userID, $categoryID));
     } catch (PDOException $e) {
         echo $req . "<br>" . $e->getMessage();
     }
@@ -70,19 +70,19 @@ function createUser($table, $titre, $contenu, $prix, $image, $userID)
 
 // ANCHOR UPDATE Modifier un utilisateur
 
-function updateUser($table, $id, $titre, $contenu, $prix, $image, $userID)
+function updateUser($table, $id, $titre, $contenu, $prix, $image, $userID, $categoryID)
 {
     try {
         $connexion = getDatabaseConnexion();
         // FIXME Attention aux noms des colonnes
         if (!empty($image)) {
-            $sql="UPDATE $table SET Titre = ?, Contenu = ?, Prix = ?, Image = ?, user_id = ? WHERE microservice_id = ? ";
+            $sql="UPDATE $table SET Titre = ?, Contenu = ?, Prix = ?, Image = ?, user_id = ?, category_id = ? WHERE microservice_id = ? ";
             $req = $connexion->prepare($sql);
-            $req->execute(array($titre, $contenu, $prix, $image, $userID, $id));
+            $req->execute(array($titre, $contenu, $prix, $image, $userID, $categoryID, $id));
         }else {
-            $sql="UPDATE $table SET Titre = ?, Contenu = ?, Prix = ?,  user_id = ? WHERE microservice_id = ? ";
+            $sql="UPDATE $table SET Titre = ?, Contenu = ?, Prix = ?,  user_id = ?,  category_id = ? WHERE microservice_id = ? ";
             $req = $connexion->prepare($sql);
-            $req->execute(array($titre, $contenu, $prix, $userID, $id));
+            $req->execute(array($titre, $contenu, $prix, $userID, $categoryID, $id));
         }
     } catch (PDOException $e) {
         echo $req . "<br>" . $e->getMessage();
@@ -108,7 +108,7 @@ function getHeaderTable($table)
 {
     try {
         $connexion = getDatabaseConnexion();
-        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='microservices' AND TABLE_NAME = '$table'";
+        $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA='m2' AND TABLE_NAME = '$table'";
         $req = $connexion->query($sql);
         $row = $req->fetchAll();
         return $row;
@@ -158,6 +158,9 @@ function afficherTableau($headers, $rows)
                             </td>
                             <td scope="col">
                                 <?= $row['user_id'] ?>
+                            </td>
+                            <td scope="col">
+                                <?= $row['category_id'] ?>
                             </td>
                 </tr>
                 <?php
