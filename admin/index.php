@@ -24,27 +24,38 @@ include 'inc/config.php'
             date_fr();
             ?>
         </div>
+        <?php
+        if (isset($_SESSION['Role']) && $_SESSION['Role'] == 1) :
+        ?>
+            <div class="row">
+                <?php
+                include 'func/crud-microservices.php';
 
-        <div class="row">
-            <?php
-            include 'func/crud-microservices.php';
+                afficherTableau(getHeaderTable('microservices'), readAllUsers('microservices'));
 
-            afficherTableau(getHeaderTable('microservices'), readAllUsers('microservices'));
+                ?>
 
-            ?>
+                <a class="btn btn-primary" href="microservices.php"><i class="bi bi-plus-square"></i> Ajouter</a>
 
-            <a class="btn btn-primary" href="microservices.php"><i class="bi bi-plus-square"></i> Ajouter</a>
+                <?php
+                // var_dump($_SESSION);
 
-            <?php
-            // var_dump($_SESSION);
-            
                 echo !empty($_SESSION['message']) ? $_SESSION['message'] : '';
                 // session_unset();
-            
 
-            ?>
-        </div>
 
+                ?>
+            </div>
+        <?php
+        else :
+        ?>
+            <div class="alert alert-danger" role="alert">
+                Veuillez vous connecter !
+                <a class="link-primary" href="<?= WEB_ROOT.'/connexion.php' ?>">CONNEXION</a>
+            </div>
+        <?php
+        endif;
+        ?>
     </main>
     <?php
     include SITE_ROOT . "/admin/inc/footer.php";
