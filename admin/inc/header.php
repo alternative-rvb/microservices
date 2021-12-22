@@ -6,18 +6,18 @@ include SITE_ROOT . 'admin/func/nav.php';
 <header class="bg-dark mb-5 p-2">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-6 col-md-8">
+            <div class="col-sm-8 col-md-8 my-2">
                 <?php
                 creationMenu($filtres);
                 ?>
             </div>
-            <div class="col-6 col-md-4 align-self-start">
+            <div class="col-sm-4 col-md-4 align-items-center my-2">
                 <?php
                 if (isset($_SESSION['Role']) && $_SESSION['Role'] == 1) :
                 ?>
 
                     <!-- ANCHOR Connecté -->
-                    <div class="dropdown text-end">
+                    <div class="dropdown text-sm-end">
                         <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
                             <?= isset($_SESSION['Pseudo']) ? '<i class="bi bi-person-circle"></i> ' . $_SESSION['Pseudo'] : 'Anonymous' ?>
                         </button>

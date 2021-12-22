@@ -23,9 +23,9 @@ function creationMenu($filtres)
     <nav class="navbar navbar-expand-lg navbar-dark p-0">
         <div class="container-fluid p-0 justify-content-start">
             <a class="navbar-brand " href="<?= WEB_ROOT ?>">
-                MS
+                Microservices
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler my-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="navbarSupportedContent" class="collapse navbar-collapse">

@@ -19,12 +19,12 @@ require 'admin/inc/config.php'
     ?>
     <main class="container">
         <div class="row">
-            <h1>Microservices</h1>
+            <h1>Tous les microservices</h1>
         </div>
         <div class="row">
-            <?php 
-                include 'admin/func/home.php';
-                afficherTableau(readAllUsers('microservices','utilisateurs'));
+            <?php
+            include 'admin/func/home.php';
+            afficherTableau(readAllUsers('microservices', 'utilisateurs'));
             ?>
         </div>
     </main>

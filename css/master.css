@@ -7,3 +7,9 @@ article .img-fluid {
 .table .img-fluid {
     width: 150px;
 }
+
+.navbar-brand {
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border: 2px solid white;
+}
