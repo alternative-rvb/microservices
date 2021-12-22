@@ -1,0 +1,9 @@
+article .img-fluid {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.table .img-fluid {
+    width: 150px;
+}

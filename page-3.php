@@ -9,7 +9,7 @@ require 'admin/inc/config.php'
     <?php
     include SITE_ROOT . 'admin/inc/meta.php'
     ?>
-    <title>Microservices</title>
+    <title>Page 3</title>
 </head>
 
 
@@ -17,16 +17,11 @@ require 'admin/inc/config.php'
     <?php
     include SITE_ROOT . 'admin/inc/header.php'
     ?>
-    <main class="container">
+    <main class="container p-1">
         <div class="row">
-            <h1>Microservices</h1>
+            <h1>Page 3</h1>
         </div>
-        <div class="row">
-            <?php 
-                include 'admin/func/home.php';
-                afficherTableau(readAllUsers('microservices','utilisateurs'));
-            ?>
-        </div>
+
     </main>
     <?php
     include SITE_ROOT . "admin/inc/footer.php"
