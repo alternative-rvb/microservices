@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Restricted Area"
+AuthUserFile "D:/laragon/www/microservices/admin/.passwd/.htpasswd"
+Require valid-user
