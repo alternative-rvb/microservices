@@ -1,13 +1,13 @@
 <?php
 session_start();
-include 'inc/config.php'
+include 'app/config.php'
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <?php
-    include SITE_ROOT . "/admin/inc/meta.php";
+    include SITE_ROOT . "/admin/app/views/meta.php";
     ?>
     <title>Microservices</title>
 </head>
@@ -15,7 +15,7 @@ include 'inc/config.php'
 
 <body>
     <?php
-    include SITE_ROOT . "/admin/inc/header.php";
+    include SITE_ROOT . "/admin/app/views/header.php";
     ?>
     <main class="container">
         <div class="row">
@@ -29,7 +29,7 @@ include 'inc/config.php'
         ?>
             <div class="row">
                 <?php
-                include 'func/crud-microservices.php';
+                include 'app/models/crud-microservices.php';
 
                 afficherTableau(getHeaderTable('microservices'), readAllUsers('microservices'));
 
@@ -58,7 +58,7 @@ include 'inc/config.php'
         ?>
     </main>
     <?php
-    include SITE_ROOT . "/admin/inc/footer.php";
+    include SITE_ROOT . "/admin/app/views/footer.php";
     ?>
 </body>
 

@@ -1,13 +1,13 @@
 <?php
 session_start();
-require 'admin/inc/config.php'
+require 'admin/app/config.php'
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <?php
-    include SITE_ROOT . 'admin/inc/meta.php'
+    include SITE_ROOT . 'admin/app/views/meta.php'
     ?>
     <title>Page 3</title>
 </head>
@@ -15,7 +15,7 @@ require 'admin/inc/config.php'
 
 <body>
     <?php
-    include SITE_ROOT . 'admin/inc/header.php'
+    include SITE_ROOT . 'admin/app/views/header.php'
     ?>
     <main class="container p-1">
         <div class="row">
@@ -24,7 +24,7 @@ require 'admin/inc/config.php'
 
     </main>
     <?php
-    include SITE_ROOT . "admin/inc/footer.php"
+    include SITE_ROOT . "admin/app/views/footer.php"
     ?>
 </body>
 

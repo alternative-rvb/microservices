@@ -1,6 +1,6 @@
 <?php
-require 'inc/config.php';
-include SITE_ROOT . '/admin/func/crud-microservices.php';
+require 'app/config.php';
+include SITE_ROOT . '/admin/app/models/crud-microservices.php';
 
 // ANCHOR Instructions
 
@@ -11,14 +11,14 @@ include SITE_ROOT . '/admin/func/crud-microservices.php';
 
 <head>
     <?php
-    include SITE_ROOT . "/admin/inc/meta.php";
+    include SITE_ROOT . "/admin/app/views/meta.php";
     ?>
     <title>Utilisateurs</title>
 </head>
 
 <body>
     <?php
-    require SITE_ROOT . "/admin/inc/header.php";
+    require SITE_ROOT . "/admin/app/views/header.php";
 
     ?>
     <main class="container">
@@ -38,7 +38,7 @@ include SITE_ROOT . '/admin/func/crud-microservices.php';
         </div>
     </main>
     <?php
-    include SITE_ROOT . "/admin/inc/footer.php";
+    include SITE_ROOT . "/admin/app/views/footer.php";
     ?>
 </body>
 

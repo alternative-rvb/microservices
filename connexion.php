@@ -1,13 +1,13 @@
 <?php
 session_start();
-require 'admin/inc/config.php'
+require 'admin/app/config.php'
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <?php
-    include SITE_ROOT . 'admin/inc/meta.php'
+    include SITE_ROOT . 'admin/app/views/meta.php'
     ?>
     <title>Connexion</title>
 </head>
@@ -15,14 +15,14 @@ require 'admin/inc/config.php'
 
 <body>
     <?php
-    include SITE_ROOT . 'admin/inc/header.php'
+    include SITE_ROOT . 'admin/app/views/header.php'
     ?>
     <main class="container p-1">
         <div class="row">
             <h1>Connexion</h1>
         </div>
         <div class="row">
-            <form action="<?= WEB_ROOT . 'admin/func/control-connexion.php' ?>" method="POST">
+            <form action="<?= WEB_ROOT . 'admin/app/controllers/control-connexion.php' ?>" method="POST">
                 <div class="mb-3">
                     <label for="email" class="form-label">Email :</label>
                     <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
@@ -47,7 +47,7 @@ require 'admin/inc/config.php'
         </div>
     </main>
     <?php
-    include SITE_ROOT . "admin/inc/footer.php"
+    include SITE_ROOT . "admin/app/views/footer.php"
     ?>
 </body>
 

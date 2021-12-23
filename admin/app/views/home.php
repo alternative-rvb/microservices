@@ -52,7 +52,7 @@ function afficherTableau($rows)
                     </p>
                     <p><?= $row['Contenu'] ?></p>
                     <p>
-                        <a class="btn btn-light" href="#">À partir de <?= $row['Prix'] ?> €</a>
+                        <a class="btn btn-dark" href="#">À partir de <?= $row['Prix'] ?> €</a>
                     </p>
                 </div>
             </div>

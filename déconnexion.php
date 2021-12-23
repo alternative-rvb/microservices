@@ -1,7 +1,7 @@
 <?php 
 session_start();
 session_unset();
-require 'admin/inc/config.php';
+require 'admin/app/config.php';
 // session_destroy();
 
 // Message pour le développeur

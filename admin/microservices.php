@@ -1,6 +1,6 @@
 <?php
-require 'inc/config.php';
-include SITE_ROOT . '/admin/func/crud-microservices.php';
+require 'app/config.php';
+include SITE_ROOT . '/admin/app/models/crud-microservices.php';
 
 
 // var_dump($id);
@@ -21,14 +21,14 @@ if (!empty($id)) {
 
 <head>
 	<?php
-	include SITE_ROOT . "/admin/inc/meta.php";
+	include SITE_ROOT . "/admin/app/views/meta.php";
 	?>
 	<title>Microservices</title>
 </head>
 
 <body>
 	<?php
-	require SITE_ROOT . "/admin/inc/header.php";
+	require SITE_ROOT . "/admin/app/views/header.php";
 	// var_dump($data);
 	?>
 	<main class="container">
@@ -39,7 +39,7 @@ if (!empty($id)) {
 			?>
 		</div>
 		<div class="row">
-			<form class="my-2" action="func/control-microservices.php" method="POST" enctype="multipart/form-data">
+			<form class="my-2" action="app/controllers/control-microservices.php" method="POST" enctype="multipart/form-data">
 
 				<input type="hidden" name="id" value="<?= $id ?>" />
 				<input type="hidden" name="action" value="<?= $action ?>" />
@@ -67,7 +67,7 @@ if (!empty($id)) {
 			</form>
 			
 			<?php if ($action != "CREATE") : ?>
-				<form class="" action="func/control-microservices.php" method="POST">
+				<form class="" action="app/controllers/control-microservices.php" method="POST">
 					<input type="hidden" name="action" value="DELETE" />
 					<input type="hidden" name="id" value="<?= $data['microservice_id'] ?>" />
 					<button class="btn btn-danger" type="submit"><i class="bi bi-trash"></i> Supprimer</button>
@@ -76,7 +76,7 @@ if (!empty($id)) {
 		</div>
 	</main>
 	<?php
-	include SITE_ROOT . "/admin/inc/footer.php";
+	include SITE_ROOT . "/admin/app/views/footer.php";
 	?>
 </body>
 

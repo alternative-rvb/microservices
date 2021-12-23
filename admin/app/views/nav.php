@@ -13,6 +13,7 @@ $filtres[] = 'uploads';
 $filtres[] = 'connexion.php';
 $filtres[] = 'déconnexion.php';
 $filtres[] = 'admin';
+$filtres[] = 'app';
 
 
 function creationMenu($filtres)
